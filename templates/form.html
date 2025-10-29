@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon Review Sentiment Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #74ABE2, #5563DE, #3A3E98);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Poppins", sans-serif;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            color: #fff;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            resize: none;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .btn-analyze {
+            background-color: #00C9A7;
+            border: none;
+            color: white;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin-top: 15px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn-analyze:hover {
+            background-color: #00B693;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        .graphs-link {
+            margin-top: 15px;
+            color: #fff;
+            font-weight: 500;
+            text-decoration: underline;
+        }
+
+        h2 {
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-box">
+        <h2>🛒 Amazon Review Sentiment Analysis</h2>
+        <form action="/predict" method="POST">
+            <textarea name="review" placeholder="✨ Type your review here..."></textarea><br>
+            <button type="submit" class="btn-analyze">Analyze</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result-box">
+            <p><b>Your Review:</b><br>{{ review }}</p>
+            <hr style="border-color: rgba(255,255,255,0.3);">
+            <p><b>Prediction:</b> {{ prediction }}</p>
+            <p><b>Confidence:</b> {{ confidence }}</p>
+        </div>
+        {% endif %}
+
+        <a href="/graphs" class="graphs-link">📊 View Model Performance Graphs</a>
+    </div>
+</body>
+</html>

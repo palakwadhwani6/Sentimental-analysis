@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Performance Graphs</title>
+    <link href="style.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            padding-top: 50px;
+            font-family: 'Poppins', sans-serif;
+        }
+        img {
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 400px;
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .btn-back {
+            background-color: #00C9A7;
+            color: white;
+            border-radius: 30px;
+            padding: 10px 25px;
+            border: none;
+            margin-top: 25px;
+        }
+        .btn-back:hover {
+            background-color: #00B693;
+        }
+    </style>
+</head>
+<body>
+    <h2>📈 Model Performance Graphs</h2>
+    <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" alt="Confusion Matrix">
+    <img src="{{ url_for('static', filename='images/accuracy.png') }}" alt="Accuracy Graph">
+    <br>
+    <a href="/" class="btn-back">⬅ Back to Home</a>
+</body>
+</html>
